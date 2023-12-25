@@ -17,6 +17,8 @@ const PizzaData = [
     ratings_count: '12,345',
     favourite: false,
     type: 'Pizza',
+    imagelink_square: require('../assets/coffee_assets/margarit/margarit_square.jpg'),
+    imagelink_portrait: require('../assets/coffee_assets/margarit/margarit_portrait.jpg'),
     index: 0,
   },
   {
@@ -36,6 +38,8 @@ const PizzaData = [
     ratings_count: '8,765',
     favourite: false,
     type: 'Pizza',
+    imagelink_square: require('../assets/coffee_assets/pepperoni/pepperoni_square.jpg'),
+    imagelink_portrait: require('../assets/coffee_assets/pepperoni/pepperoni_portrait.jpg'),
     index: 1,
   },
   {
@@ -55,6 +59,8 @@ const PizzaData = [
     ratings_count: '5,432',
     favourite: false,
     type: 'Pizza',
+    imagelink_square: require('../assets/coffee_assets/hawaiian/hawaiian_square.jpg'),
+    imagelink_portrait: require('../assets/coffee_assets/hawaiian/hawaiian_portriat.jpg'),
     index: 2,
   },
 ];
