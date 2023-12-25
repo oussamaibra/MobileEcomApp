@@ -22,11 +22,15 @@ import PaymentFooter from '../components/PaymentFooter';
 
 const DetailsScreen = ({ navigation, route }: any) => {
   const ItemOfIndex = useStore((state: any) =>
-    route.params.type == 'Coffee' ? state.CoffeeList : state.BeanList,
+    route.params.type == 'Coffee'
+      ? state.CoffeeList
+      : route.params.type == 'Pizza'
+      ? state.PizzaList
+      : state.BeanList
   )[route.params.index];
   const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
   const deleteFromFavoriteList = useStore(
-    (state: any) => state.deleteFromFavoriteList,
+    (state: any) => state.deleteFromFavoriteList
   );
   const addToCart = useStore((state: any) => state.addToCart);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
@@ -93,7 +97,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
           {fullDesc ? (
             <TouchableWithoutFeedback
               onPress={() => {
-                setFullDesc(prev => !prev);
+                setFullDesc((prev) => !prev);
               }}>
               <Text style={styles.DescriptionText}>
                 {ItemOfIndex.description}
@@ -102,7 +106,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
           ) : (
             <TouchableWithoutFeedback
               onPress={() => {
-                setFullDesc(prev => !prev);
+                setFullDesc((prev) => !prev);
               }}>
               <Text numberOfLines={3} style={styles.DescriptionText}>
                 {ItemOfIndex.description}
