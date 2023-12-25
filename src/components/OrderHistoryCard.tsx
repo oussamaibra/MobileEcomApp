@@ -29,7 +29,7 @@ const OrderHistoryCard: React.FC<OrderHistoryCardProps> = ({
         </View>
         <View style={styles.PriceContainer}>
           <Text style={styles.HeaderTitle}>Total Amount</Text>
-          <Text style={styles.HeaderPrice}>$ {CartListPrice}</Text>
+          <Text style={styles.HeaderPrice}>LD {CartListPrice}</Text>
         </View>
       </View>
       <View style={styles.ListContainer}>

@@ -175,7 +175,7 @@ const PaymentScreen = ({navigation, route}: any) => {
 
       <PaymentFooter
         buttonTitle={`Pay with ${paymentMode}`}
-        price={{price: route.params.amount, currency: '$'}}
+        price={{price: route.params.amount, currency: 'LD'}}
         buttonPressHandler={buttonPressHandler}
       />
     </View>
