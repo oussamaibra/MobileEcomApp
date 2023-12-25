@@ -106,11 +106,15 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
               </View>
               <View style={styles.ItemPropertiesContainer}>
                 <View style={styles.ProperFirst}>
-                  <CustomIcon
-                    name={type == 'Bean' ? 'bean' : 'beans'}
-                    size={type == 'Bean' ? FONTSIZE.size_18 : FONTSIZE.size_24}
-                    color={COLORS.primaryOrangeHex}
-                  />
+                  {type !== 'Pizza' && (
+                    <CustomIcon
+                      name={type == 'Bean' ? 'bean' : 'beans'}
+                      size={
+                        type == 'Bean' ? FONTSIZE.size_18 : FONTSIZE.size_24
+                      }
+                      color={COLORS.primaryOrangeHex}
+                    />
+                  )}
                   <Text
                     style={[
                       styles.PropertyTextFirst,
@@ -124,14 +128,17 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
                     {type}
                   </Text>
                 </View>
-                <View style={styles.ProperFirst}>
-                  <CustomIcon
-                    name={type == 'Bean' ? 'location' : 'drop'}
-                    size={FONTSIZE.size_16}
-                    color={COLORS.primaryOrangeHex}
-                  />
-                  <Text style={styles.PropertyTextLast}>{ingredients}</Text>
-                </View>
+                {type !== 'Pizza' && (
+                  <View style={styles.ProperFirst}>
+                    <CustomIcon
+                      name={type == 'Bean' ? 'location' : 'drop'}
+                      size={FONTSIZE.size_16}
+                      color={COLORS.primaryOrangeHex}
+                    />
+
+                    <Text style={styles.PropertyTextLast}>{ingredients}</Text>
+                  </View>
+                )}
               </View>
             </View>
             <View style={styles.InfoContainerRow}>
@@ -144,9 +151,15 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
                 <Text style={styles.RatingText}>{average_rating}</Text>
                 <Text style={styles.RatingCountText}>({ratings_count})</Text>
               </View>
-              <View style={styles.RoastedContainer}>
-                <Text style={styles.RoastedText}>{roasted}</Text>
-              </View>
+              {type === 'Pizza' ? (
+                <View style={styles.FoodContainer}>
+                  <Text style={styles.RoastedText}>{ingredients}</Text>
+                </View>
+              ) : (
+                <View style={styles.RoastedContainer}>
+                  <Text style={styles.RoastedText}>{roasted}</Text>
+                </View>
+              )}
             </View>
           </View>
         </View>
@@ -241,6 +254,14 @@ const styles = StyleSheet.create({
   RoastedContainer: {
     height: 55,
     width: 55 * 2 + SPACING.space_20,
+    borderRadius: BORDERRADIUS.radius_15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.primaryBlackHex,
+  },
+  FoodContainer: {
+    height: 55,
+    width: 80 * 2 + SPACING.space_20,
     borderRadius: BORDERRADIUS.radius_15,
     justifyContent: 'center',
     alignItems: 'center',
