@@ -25,8 +25,8 @@ const DetailsScreen = ({ navigation, route }: any) => {
     route.params.type == 'Coffee'
       ? state.CoffeeList
       : route.params.type == 'Pizza'
-        ? state.PizzaList
-        : state.BeanList
+      ? state.PizzaList
+      : state.BeanList
   )[route.params.index];
   const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
   const deleteFromFavoriteList = useStore(
@@ -69,8 +69,6 @@ const DetailsScreen = ({ navigation, route }: any) => {
     calculateCartPrice();
     navigation.navigate('Cart');
   };
-
-  console.log('eeeeeeeeeeeee', ItemOfIndex.imagelink_portrait)
 
   return (
     <View style={styles.ScreenContainer}>
