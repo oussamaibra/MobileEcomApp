@@ -66,7 +66,9 @@ const CoffeeCard: React.FC<CoffeeCardProps> = ({
         </View>
       </ImageBackground>
       <Text style={styles.CardTitle}>{name}</Text>
-      <Text style={styles.CardSubtitle}>{special_ingredient}</Text>
+      <Text style={styles.CardSubtitle}>
+        {special_ingredient.slice(0, 30)}...
+      </Text>
       <View style={styles.CardFooterRow}>
         <Text style={styles.CardPriceCurrency}>
           $ <Text style={styles.CardPrice}>{price.price}</Text>

@@ -49,7 +49,7 @@ const PizzaData = [
       'A controversial yet beloved pizza topped with ham, pineapple, and mozzarella cheese.',
     roasted: 'N/A',
     ingredients: ['Tomato sauce', 'Mozzarella cheese', 'Ham', 'Pineapple'],
-    special_ingredient: 'Sweet and tangy BBQ sauce drizzle (optional)',
+    special_ingredient: 'Sweet and tangy',
     prices: [
       {size: 'Small', price: 10.99, currency: '$'},
       {size: 'Medium', price: 14.99, currency: '$'},
