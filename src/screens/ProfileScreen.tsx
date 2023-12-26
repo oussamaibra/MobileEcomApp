@@ -93,7 +93,8 @@ const ProfileScreen = ({ navigation }: any) => {
               size={FONTSIZE.size_16}
             />
           </TouchableOpacity>
-          <Text style={styles.HeaderText}>Profile</Text>
+          <Text style={styles.HeaderText}>حساب تعريفي
+</Text>
           <View style={styles.EmptyView} />
         </View>
 

@@ -52,12 +52,15 @@ const HomeScreen = ({ navigation }: any) => {
   const CoffeeList = useStore((state: any) => state.CoffeeList);
   const PizzaList = useStore((state: any) => state.PizzaList);
   const BeanList = useStore((state: any) => state.BeanList);
+  const CrepeList = useStore((state: any) => state.CrepeList);
   const addToCart = useStore((state: any) => state.addToCart);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [categories, setCategories] = useState(
-    getCategoriesFromData(CoffeeList.concat(PizzaList))
+    getCategoriesFromData(
+      CoffeeList.concat(PizzaList).concat(BeanList).concat(CrepeList)
+    )
   );
   const [searchText, setSearchText] = useState('');
   const [categoryIndex, setCategoryIndex] = useState({
@@ -65,7 +68,10 @@ const HomeScreen = ({ navigation }: any) => {
     category: categories[0],
   });
   const [sortedCoffee, setSortedCoffee] = useState(
-    getCoffeeList(categoryIndex.category, CoffeeList.concat(PizzaList))
+    getCoffeeList(
+      categoryIndex.category,
+      CoffeeList.concat(PizzaList).concat(BeanList).concat(CrepeList)
+    )
   );
 
   const ListRef: any = useRef<FlatList>();
@@ -79,9 +85,12 @@ const HomeScreen = ({ navigation }: any) => {
       });
       setCategoryIndex({ index: 0, category: categories[0] });
       setSortedCoffee([
-        ...CoffeeList.concat(PizzaList).filter((item: any) =>
-          item.name.toLowerCase().includes(search.toLowerCase())
-        ),
+        ...CoffeeList.concat(PizzaList)
+          .concat(BeanList)
+          .concat(CrepeList)
+          .filter((item: any) =>
+            item.name.toLowerCase().includes(search.toLowerCase())
+          ),
       ]);
     }
   };
@@ -92,7 +101,9 @@ const HomeScreen = ({ navigation }: any) => {
       offset: 0,
     });
     setCategoryIndex({ index: 0, category: categories[0] });
-    setSortedCoffee([...CoffeeList.concat(PizzaList)]);
+    setSortedCoffee([
+      ...CoffeeList.concat(PizzaList).concat(BeanList).concat(CrepeList),
+    ]);
     setSearchText('');
   };
 
@@ -118,7 +129,7 @@ const HomeScreen = ({ navigation }: any) => {
     });
     calculateCartPrice();
     ToastAndroid.showWithGravity(
-      `${name} is Added to Cart`,
+      `تمت إضافة ${name} الى سلتك`,
       ToastAndroid.SHORT,
       ToastAndroid.CENTER
     );
@@ -133,9 +144,7 @@ const HomeScreen = ({ navigation }: any) => {
         {/* App Header */}
         <HeaderBar />
 
-        <Text style={styles.ScreenTitle}>
-          Find the best{'\n'}choice for you
-        </Text>
+        <Text style={styles.ScreenTitle}>العثور على ما ترغب في تناوله</Text>
 
         {/* Search Input */}
 
@@ -156,7 +165,7 @@ const HomeScreen = ({ navigation }: any) => {
             />
           </TouchableOpacity>
           <TextInput
-            placeholder="Find Your choice..."
+            placeholder="ابحث عن اختيارك..."
             value={searchText}
             onChangeText={(text) => {
               setSearchText(text);
@@ -204,7 +213,12 @@ const HomeScreen = ({ navigation }: any) => {
                     category: categories[index],
                   });
                   setSortedCoffee([
-                    ...getCoffeeList(categories[index], CoffeeList.concat(PizzaList)),
+                    ...getCoffeeList(
+                      categories[index],
+                      CoffeeList.concat(PizzaList)
+                        .concat(BeanList)
+                        .concat(CrepeList)
+                    ),
                   ]);
                 }}>
                 <Text
@@ -259,7 +273,7 @@ const HomeScreen = ({ navigation }: any) => {
                   name={item.name}
                   special_ingredient={item.special_ingredient}
                   average_rating={item.average_rating}
-                  price={item.prices[2]}
+                  price={item.prices[item.prices.length - 1]}
                   buttonPressHandler={CoffeCardAddToCart}
                 />
               </TouchableOpacity>
@@ -267,7 +281,7 @@ const HomeScreen = ({ navigation }: any) => {
           }}
         />
 
-        <Text style={styles.CoffeeBeansTitle}>Coffee Beans</Text>
+        <Text style={styles.CoffeeBeansTitle}>حبوب القهوة</Text>
 
         {/* Beans Flatlist */}
 
@@ -275,6 +289,124 @@ const HomeScreen = ({ navigation }: any) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={BeanList}
+          contentContainerStyle={[
+            styles.FlatListContainer,
+            // { marginBottom: tabBarHeight },
+          ]}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.push('Details', {
+                    index: item.index,
+                    id: item.id,
+                    type: item.type,
+                  });
+                }}>
+                <CoffeeCard
+                  id={item.id}
+                  index={item.index}
+                  type={item.type}
+                  roasted={item.roasted}
+                  imagelink_square={item.imagelink_square}
+                  name={item.name}
+                  special_ingredient={item.special_ingredient}
+                  average_rating={item.average_rating}
+                  price={item.prices[item.prices.length - 1]}
+                  buttonPressHandler={CoffeCardAddToCart}
+                />
+              </TouchableOpacity>
+            );
+          }}
+        />
+        <Text style={styles.CoffeeBeansTitle}>القهوة</Text>
+
+        {/* Beans Flatlist */}
+
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={CoffeeList}
+          contentContainerStyle={[
+            styles.FlatListContainer,
+            // { marginBottom: tabBarHeight },
+          ]}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.push('Details', {
+                    index: item.index,
+                    id: item.id,
+                    type: item.type,
+                  });
+                }}>
+                <CoffeeCard
+                  id={item.id}
+                  index={item.index}
+                  type={item.type}
+                  roasted={item.roasted}
+                  imagelink_square={item.imagelink_square}
+                  name={item.name}
+                  special_ingredient={item.special_ingredient}
+                  average_rating={item.average_rating}
+                  price={item.prices[item.prices.length - 1]}
+                  buttonPressHandler={CoffeCardAddToCart}
+                />
+              </TouchableOpacity>
+            );
+          }}
+        />
+        <Text style={styles.CoffeeBeansTitle}>البيتزا</Text>
+
+        {/* Beans Flatlist */}
+
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={PizzaList}
+          contentContainerStyle={[
+            styles.FlatListContainer,
+            // { marginBottom: tabBarHeight },
+          ]}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.push('Details', {
+                    index: item.index,
+                    id: item.id,
+                    type: item.type,
+                  });
+                }}>
+                <CoffeeCard
+                  id={item.id}
+                  index={item.index}
+                  type={item.type}
+                  roasted={item.roasted}
+                  imagelink_square={item.imagelink_square}
+                  name={item.name}
+                  special_ingredient={item.special_ingredient}
+                  average_rating={item.average_rating}
+                  price={item.prices[item.prices.length - 1]}
+                  buttonPressHandler={CoffeCardAddToCart}
+                />
+              </TouchableOpacity>
+            );
+          }}
+        />
+
+        <Text style={styles.CoffeeBeansTitle}>البانكيك</Text>
+
+        {/* Beans Flatlist */}
+
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={CrepeList}
           contentContainerStyle={[
             styles.FlatListContainer,
             { marginBottom: tabBarHeight },
@@ -299,7 +431,7 @@ const HomeScreen = ({ navigation }: any) => {
                   name={item.name}
                   special_ingredient={item.special_ingredient}
                   average_rating={item.average_rating}
-                  price={item.prices[2]}
+                  price={item.prices[item.prices.length - 1]}
                   buttonPressHandler={CoffeCardAddToCart}
                 />
               </TouchableOpacity>
@@ -324,6 +456,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_semibold,
     color: COLORS.primaryWhiteHex,
     paddingLeft: SPACING.space_30,
+    paddingRight: SPACING.space_30,
   },
   InputContainerComponent: {
     flexDirection: 'row',

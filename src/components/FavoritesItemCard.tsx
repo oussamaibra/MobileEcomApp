@@ -60,7 +60,7 @@ const FavoritesItemCard: React.FC<FavoritesItemCardProps> = ({
         end={{x: 1, y: 1}}
         colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
         style={styles.ContainerLinearGradient}>
-        <Text style={styles.DescriptionTitle}>Description</Text>
+        <Text style={styles.DescriptionTitle}>تفاصيل</Text>
         <Text style={styles.DescriptionText}>{description}</Text>
       </LinearGradient>
     </View>

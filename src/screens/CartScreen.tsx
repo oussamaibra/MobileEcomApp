@@ -50,10 +50,10 @@ const CartScreen = ({navigation, route}: any) => {
         <View
           style={[styles.ScrollViewInnerView, {marginBottom: tabBarHeight}]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title="Cart" />
+            <HeaderBar title="السلة" />
 
             {CartList.length == 0 ? (
-              <EmptyListAnimation title={'Cart is Empty'} />
+              <EmptyListAnimation title={'السلة فارغة'} />
             ) : (
               <View style={styles.ListItemContainer}>
                 {CartList.map((data: any) => (
@@ -90,8 +90,8 @@ const CartScreen = ({navigation, route}: any) => {
           {CartList.length != 0 ? (
             <PaymentFooter
               buttonPressHandler={buttonPressHandler}
-              buttonTitle="Pay"
-              price={{price: CartPrice, currency: 'LD'}}
+              buttonTitle="الدفع"
+              price={{price: CartPrice, currency: 'LYD'}}
             />
           ) : (
             <></>

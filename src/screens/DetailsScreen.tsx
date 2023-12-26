@@ -26,6 +26,8 @@ const DetailsScreen = ({ navigation, route }: any) => {
       ? state.CoffeeList
       : route.params.type == 'Pizza'
       ? state.PizzaList
+      : route.params.type == 'Pancake'
+      ? state.CrepeList
       : state.BeanList
   )[route.params.index];
   const addToFavoriteList = useStore((state: any) => state.addToFavoriteList);
@@ -93,7 +95,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
         />
 
         <View style={styles.FooterInfoArea}>
-          <Text style={styles.InfoTitle}>Description</Text>
+          <Text style={styles.InfoTitle}>تفاصيل</Text>
           {fullDesc ? (
             <TouchableWithoutFeedback
               onPress={() => {
@@ -113,7 +115,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
               </Text>
             </TouchableWithoutFeedback>
           )}
-          <Text style={styles.InfoTitle}>Size</Text>
+          <Text style={styles.InfoTitle}>الحجم</Text>
           <View style={styles.SizeOuterContainer}>
             {ItemOfIndex.prices.map((data: any) => (
               <TouchableOpacity
@@ -152,7 +154,7 @@ const DetailsScreen = ({ navigation, route }: any) => {
         </View>
         <PaymentFooter
           price={price}
-          buttonTitle="Add to Cart"
+          buttonTitle="أضف الى السلة"
           buttonPressHandler={() => {
             addToCarthandler({
               id: ItemOfIndex.id,

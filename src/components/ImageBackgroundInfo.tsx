@@ -106,7 +106,7 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
               </View>
               <View style={styles.ItemPropertiesContainer}>
                 <View style={styles.ProperFirst}>
-                  {type !== 'Pizza' && (
+                  {type !== 'Pizza' && type !== 'Pancake' && (
                     <CustomIcon
                       name={type == 'Bean' ? 'bean' : 'beans'}
                       size={
@@ -128,7 +128,7 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
                     {type}
                   </Text>
                 </View>
-                {type !== 'Pizza' && (
+                {type !== 'Pizza' && type !== 'Pancake' && (
                   <View style={styles.ProperFirst}>
                     <CustomIcon
                       name={type == 'Bean' ? 'location' : 'drop'}
@@ -151,7 +151,7 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
                 <Text style={styles.RatingText}>{average_rating}</Text>
                 <Text style={styles.RatingCountText}>({ratings_count})</Text>
               </View>
-              {type === 'Pizza' ? (
+              {type === 'Pizza' || type === 'Pancake' ? (
                 <View style={styles.FoodContainer}>
                   <Text style={styles.RoastedText}>{ingredients}</Text>
                 </View>

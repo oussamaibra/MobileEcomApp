@@ -24,12 +24,12 @@ const OrderHistoryCard: React.FC<OrderHistoryCardProps> = ({
     <View style={styles.CardContainer}>
       <View style={styles.CardHeader}>
         <View>
-          <Text style={styles.HeaderTitle}>Order Time</Text>
+          <Text style={styles.HeaderTitle}>وقت التسليم</Text>
           <Text style={styles.HeaderSubtitle}>{OrderDate}</Text>
         </View>
         <View style={styles.PriceContainer}>
-          <Text style={styles.HeaderTitle}>Total Amount</Text>
-          <Text style={styles.HeaderPrice}>LD {CartListPrice}</Text>
+          <Text style={styles.HeaderTitle}>المبلغ الإجمالي</Text>
+          <Text style={styles.HeaderPrice}>LYD {CartListPrice}</Text>
         </View>
       </View>
       <View style={styles.ListContainer}>

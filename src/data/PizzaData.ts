@@ -2,12 +2,12 @@
 const PizzaData = [
   {
     id: 'PZ1',
-    name: 'Margherita',
+    name: 'مارجريتا',
     description:
-      'A classic Neapolitan pizza with a simple yet delicious combination of tomato sauce, mozzarella cheese, and fresh basil.',
-    roasted: 'N/A',
-    ingredients: 'Tomato sauce, Mozzarella cheese and Fresh basil',
-    special_ingredient: 'None',
+      'بيتزا نابولية كلاسيكية بمزيج بسيط ولكن لذيذ من صلصة الطماطم وجبن الموتزاريلا والريحان الطازج.',
+    roasted: 'غير متوفر',
+    ingredients: 'صلصة الطماطم وجبن الموتزاريلا والريحان الطازج',
+    special_ingredient: 'لا شيء',
     prices: [
       { size: 'Small', price: 8.99, currency: 'LD' },
       { size: 'Medium', price: 12.99, currency: 'LD' },
@@ -24,12 +24,13 @@ const PizzaData = [
   },
   {
     id: 'PZ2',
-    name: 'Pepperoni',
+    name: 'بيبروني',
     description:
-      'A crowd-pleasing pizza loaded with savory pepperoni slices and a tangy tomato sauce.',
-    roasted: 'N/A',
-    ingredients: 'Tomato sauce, Mozzarella cheese and Pepperoni',
-    special_ingredient: 'Spicy chili flakes (optional)',
+      'بيتزا مبهجة للحشود محملة بشرائح بيبيروني لذيذة وصلصة طماطم حادة.',
+    roasted: 'غير متوفر',
+    ingredients: 'صلصة الطماطم وجبن الموتزاريلا والبيبروني',
+    special_ingredient: 'رقائق الفلفل الحار (اختياري)',
+
     prices: [
       { size: 'Small', price: 9.99, currency: 'LD' },
       { size: 'Medium', price: 13.99, currency: 'LD' },
@@ -46,12 +47,13 @@ const PizzaData = [
   },
   {
     id: 'PZ3',
-    name: 'Hawaiian',
+    name: 'هاواي',
     description:
-      'A controversial yet beloved pizza topped with ham, pineapple, and mozzarella cheese.',
-    roasted: 'N/A',
-    ingredients: 'Tomato sauce, Mozzarella cheese, Ham and Pineapple',
-    special_ingredient: 'Sweet and tangy BBQ',
+      'بيتزا مثيرة للجدل ولكنها محبوبة مغطاة باللحم والأناناس وجبن الموتزاريلا.',
+    roasted: 'غير متوفر',
+    ingredients: 'صلصة الطماطم وجبن الموتزاريلا واللحم والأناناس',
+    special_ingredient: 'شواء حلو وحاد',
+
     prices: [
       { size: 'Small', price: 10.99, currency: 'LD' },
       { size: 'Medium', price: 14.99, currency: 'LD' },

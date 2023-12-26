@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CoffeeData from '../data/CoffeeData';
 import BeansData from '../data/BeansData';
 import PizzaData from '../data/PizzaData';
+import CrepeData from '../data/CrepeData';
 
 export const useStore = create(
   persist(
@@ -15,6 +16,7 @@ export const useStore = create(
       CoffeeList: CoffeeData,
       BeanList: BeansData,
       PizzaList: PizzaData,
+      CrepeList: CrepeData,
       CartPrice: 0,
       FavoritesList: [],
       CartList: [],
@@ -113,6 +115,18 @@ export const useStore = create(
                   break;
                 }
               }
+            } else if (type == 'Pancake') {
+              for (let i = 0; i < state.CrepeList.length; i++) {
+                if (state.CrepeList[i].id == id) {
+                  if (state.CrepeList[i].favourite == false) {
+                    state.CrepeList[i].favourite = true;
+                    state.FavoritesList.unshift(state.CrepeList[i]);
+                  } else {
+                    state.CrepeList[i].favourite = false;
+                  }
+                  break;
+                }
+              }
             }
           })
         ),
@@ -148,6 +162,17 @@ export const useStore = create(
                     state.PizzaList[i].favourite = false;
                   } else {
                     state.PizzaList[i].favourite = true;
+                  }
+                  break;
+                }
+              }
+            } else if (type == 'Pancake') {
+              for (let i = 0; i < state.CrepeList.length; i++) {
+                if (state.CrepeList[i].id == id) {
+                  if (state.CrepeList[i].favourite == true) {
+                    state.CrepeList[i].favourite = false;
+                  } else {
+                    state.CrepeList[i].favourite = true;
                   }
                   break;
                 }

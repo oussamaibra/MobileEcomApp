@@ -60,10 +60,10 @@ const OrderHistoryScreen = ({navigation}: any) => {
         <View
           style={[styles.ScrollViewInnerView, {marginBottom: tabBarHeight}]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title="Order History" />
+            <HeaderBar title="سجل الطلبات" />
 
             {OrderHistoryList.length == 0 ? (
-              <EmptyListAnimation title={'No Order History'} />
+              <EmptyListAnimation title={'ليس لديك طلبات سابقة بعد'} />
             ) : (
               <View style={styles.ListItemContainer}>
                 {OrderHistoryList.map((data: any, index: any) => (
@@ -84,7 +84,7 @@ const OrderHistoryScreen = ({navigation}: any) => {
               onPress={() => {
                 buttonPressHandler();
               }}>
-              <Text style={styles.ButtonText}>Download</Text>
+              <Text style={styles.ButtonText}>تحميل</Text>
             </TouchableOpacity>
           ) : (
             <></>
